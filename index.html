@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyzee Store - Pricing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', 'Arial Bold', Arial, sans-serif;
+            background: linear-gradient(135deg, #d4d4d4 0%, #9e9e9e 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle, rgba(0,0,0,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .header-title {
+            display: inline-block;
+            position: relative;
+        }
+
+        .title-top {
+            background: linear-gradient(135deg, #00bfff 0%, #0088cc 100%);
+            color: black;
+            font-size: 4rem;
+            padding: 20px 40px;
+            letter-spacing: 5px;
+            border: 4px solid black;
+            position: relative;
+            z-index: 2;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.3);
+        }
+
+        .title-bottom {
+            background: black;
+            color: white;
+            font-size: 4rem;
+            padding: 20px 40px;
+            letter-spacing: 5px;
+            border: 4px solid black;
+            margin-top: -10px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.3);
+        }
+
+        .halftone {
+            position: absolute;
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, black 20%, transparent 20%);
+            background-size: 10px 10px;
+            opacity: 0.6;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 4px solid black;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 12px 12px 0 rgba(0,0,0,0.3);
+        }
+
+        .card-label {
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border: 3px solid black;
+        }
+
+        .label-gemini {
+            background: #d4ff00;
+            color: black;
+        }
+
+        .label-gpt {
+            background: #ff69b4;
+            color: black;
+        }
+
+        .label-discord {
+            background: #5865F2;
+            color: white;
+        }
+
+        .label-tomoro {
+            background: #ff4444;
+            color: white;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 900;
+            margin: 20px 0;
+            letter-spacing: 2px;
+        }
+
+        .price-small {
+            font-size: 2rem;
+        }
+
+        .description {
+            font-family: Arial, sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #333;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .cta {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-size: 1rem;
+        }
+
+        .contact-info a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .order-button {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            border: 4px solid black;
+            box-shadow: 6px 6px 0 rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 20px 0;
+        }
+
+        .order-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.4);
+            text-decoration: none;
+        }
+
+        .order-button::before {
+            content: "📱 ";
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .title-top, .title-bottom {
+                font-size: 2.5rem;
+                padding: 15px 25px;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price {
+                font-size: 2.5rem;
+            }
+
+            .halftone {
+                display: none;
+            }
+        }
+    </style>
+</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyzee Store - Pricing</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-title">
+                <div class="title-top">SKYZEE STORE</div>
+                <div class="title-bottom">PRICE LIST</div>
+                <div class="halftone"></div>
+            </div>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="card-label label-gemini">GEMINI PRO 4 MONTH</div>
+                <div class="price">RP 20.000</div>
+                <div class="description">
+                    GEMINI PRO + 2TB DRIVE<br>
+                    STORAGE
+                </div>
+            </div>
+
+            <div class="pricing-card">
+                <div class="card-label label-gpt">GPT GO 1 YEAR</div>
+                <div class="price">RP 20.000</div>
+                <div class="description">
+                    AKSES GPT TERBARU + LIMIT<br>
+                    LEBIH BANYAK
+                </div>
+            </div>
+
+            <div class="pricing-card">
+                <div class="card-label label-discord">DISCORD NITRO 3 MONTH</div>
+                <div class="price">RP 22.000</div>
+                <div class="description">
+                    BOOST SERVER, AVATAR + PROFILE<br>
+                    ANIMASI, STREAMING HD 4K60FPS
+                </div>
+            </div>
+
+            <div class="pricing-card">
+                <div class="card-label label-tomoro">AKUN TOMORO</div>
+                <div class="price price-small">RP 1.500</div>
+                <div class="description">
+                    VOUCHER BUY 1 GET 1 + DISC 50%
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <a href="https://wa.me/6289665533074?text=Halo%20Bang,%20saya%20mau%20order!" class="order-button" target="_blank">ORDER NOW!</a>
+            <div class="cta">Best Price.</div>
+            <div class="contact-info">
+                <a href="https://instagram.com/frmanputra_" target="_blank">@frmanputra_</a>
+                <a href="https://frmanputra.my.id" target="_blank">www.frmanputra.my.id</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
